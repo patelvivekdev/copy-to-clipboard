@@ -8,7 +8,7 @@ const BLOGS_FOLDER = path.join(process.cwd(), "content", "blogs");
 type Metadata = {
   title: string;
   publishedAt: string;
-  summary: string;
+  description: string;
   image?: string;
   tags: string;
   published: boolean;
