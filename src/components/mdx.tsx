@@ -1,10 +1,22 @@
 import { MDXComponents } from "mdx/types";
 import { Tweet } from "react-tweet";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { Code } from "bright";
 import Pre from "./Pre";
 
+Code.theme = {
+  dark: "github-dark",
+  light: "github-light",
+};
+
 export const mdxComponents: MDXComponents = {
-  pre: Pre,
+  pre: (props) => (
+    <div className="flex flex-row items-center gap-2">
+      <Code className="w-full">{props.children}</Code>
+      <Pre {...props} />
+    </div>
+  ),
+  // code: (props) => <Code {...props}>{props.children}</Code>,
   Tweet: (props) => (
     <div
       style={{

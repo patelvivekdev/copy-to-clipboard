@@ -1,24 +1,15 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Clipboard } from "lucide-react";
-import { Code } from "bright";
 import { toast } from "react-hot-toast";
 
-Code.theme = {
-  dark: "github-dark",
-  light: "github-light",
-};
-
 const Pre = (props: any) => {
-  const textInput = useRef<any>(null);
+  const textInput = props.children;
   const [copied, setCopied] = useState(false);
 
-  const onExit = () => {
-    setCopied(false);
-  };
   const onCopy = () => {
     setCopied(true);
-    navigator.clipboard.writeText(textInput?.current?.textContent);
+    navigator.clipboard.writeText(textInput);
     toast.success("Copied to clipboard!", {
       position: "bottom-center",
       duration: 2500,
@@ -29,12 +20,7 @@ const Pre = (props: any) => {
   };
 
   return (
-    <pre
-      ref={textInput}
-      onMouseLeave={onExit}
-      className="flex flex-row justify-between gap-3"
-    >
-      <Code {...props}>{props.children}</Code>
+    <div className="relative">
       <button
         aria-label="Copy code"
         type="button"
@@ -44,10 +30,10 @@ const Pre = (props: any) => {
         {copied ? (
           <Clipboard className="text-[#80d1a9]" />
         ) : (
-          <Clipboard className="text-white" />
+          <Clipboard className="dark:text-white text-[#333]" />
         )}
       </button>
-    </pre>
+    </div>
   );
 };
 
