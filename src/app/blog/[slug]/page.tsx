@@ -20,7 +20,7 @@ export default function Blog({ params }: { params: any }) {
       <div className="mb-4 mt-2 flex items-center justify-between">
         <p className="text-lg text-neutral-700 dark:text-neutral-300">
           <span className="flex flex-row items-center gap-2">
-            {blog.metadata.summary}
+            {blog.metadata.description}
           </span>
         </p>
       </div>
