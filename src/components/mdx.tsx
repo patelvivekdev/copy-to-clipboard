@@ -11,7 +11,7 @@ Code.theme = {
 
 export const mdxComponents: MDXComponents = {
   pre: (props) => (
-    <div className="flex flex-row items-center gap-2">
+    <div className="flex flex-row gap-2 bg-[#0d1117]">
       <Code className="w-full">{props.children}</Code>
       <Pre {...props} />
     </div>
