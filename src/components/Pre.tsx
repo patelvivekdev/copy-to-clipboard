@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Clipboard } from "lucide-react";
-import { toast } from "react-hot-toast";
+import { Copy, Check } from 'lucide-react';
 
 const Pre = (props: any) => {
   const textInput = props.children;
@@ -10,13 +9,9 @@ const Pre = (props: any) => {
   const onCopy = () => {
     setCopied(true);
     navigator.clipboard.writeText(textInput);
-    toast.success("Copied to clipboard!", {
-      position: "bottom-center",
-      duration: 2500,
-    });
     setTimeout(() => {
       setCopied(false);
-    }, 2500);
+    }, 2000);
   };
 
   return (
@@ -27,11 +22,7 @@ const Pre = (props: any) => {
         className="h-4 w-4"
         onClick={onCopy}
       >
-        {copied ? (
-          <Clipboard className="text-[#80d1a9]" />
-        ) : (
-          <Clipboard className="dark:text-white text-[#333]" />
-        )}
+        {copied ? <Check className='text-[#80d1a9]' /> : <Copy className='text-white' />}
       </button>
     </div>
   );

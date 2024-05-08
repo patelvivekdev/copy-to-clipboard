@@ -11,3 +11,40 @@ This is my demo blog post. I'm so excited to start blogging.
 ```bash title="Install Next.js"
 npx create-next-app@latest my-blog
 ```
+
+## Simple tsx code 
+
+
+```tsx
+"use client";
+import { useState } from "react";
+import { Copy, Check } from 'lucide-react';
+
+const Pre = (props: any) => {
+  const textInput = props.children;
+  const [copied, setCopied] = useState(false);
+
+  const onCopy = () => {
+    setCopied(true);
+    navigator.clipboard.writeText(textInput);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+
+  return (
+    <div className="relative">
+      <button
+        aria-label="Copy code"
+        type="button"
+        className="h-4 w-4"
+        onClick={onCopy}
+      >
+        {copied ? <Check className='text-[#80d1a9]' /> : <Copy className='text-white' />}
+      </button>
+    </div>
+  );
+};
+
+export default Pre;
+```
