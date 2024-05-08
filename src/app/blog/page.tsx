@@ -31,7 +31,7 @@ const BlogPage = () => {
             <Link href={`/blog/${blog.slug}`}>
               <h3 className='text-xl font-bold'>{blog.metadata.title}</h3>
             </Link>
-            <p>{blog.metadata.summary}</p>
+            <p>{blog.metadata.description}</p>
           </div>
         ))}
       </div>
