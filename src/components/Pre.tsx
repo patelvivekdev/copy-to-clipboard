@@ -1,14 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from 'react';
 import { Copy, Check } from 'lucide-react';
 
 const Pre = (props: any) => {
-  const textInput = props.children;
+  const textInput = useRef<any>(null);
   const [copied, setCopied] = useState(false);
 
   const onCopy = () => {
     setCopied(true);
-    navigator.clipboard.writeText(textInput);
+    navigator.clipboard.writeText(textInput?.current?.textContent);
     setTimeout(() => {
       setCopied(false);
     }, 2000);
@@ -16,6 +16,7 @@ const Pre = (props: any) => {
 
   return (
     <div className="relative top-[20px] right-[20px]">
+      <span ref={textInput} className='hidden'>{props.children}</span>
       <button
         aria-label="Copy code"
         type="button"
