@@ -22,7 +22,7 @@ const BlogPage = () => {
     return dateB.getTime() - dateA.getTime();
   });
   return (
-    <div className="min-h-screen mx-auto w-4/5 flex justify-center items-center">
+    <div className="min-h-screen mx-auto w-4/5 flex flex-col gap-4 justify-center items-center">
       <h1 className="text-3xl font-bold">All Blogs</h1>
 
       <div className='flex flex-col gap-4'>
