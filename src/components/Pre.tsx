@@ -15,7 +15,7 @@ const Pre = (props: any) => {
   };
 
   return (
-    <div className="relative t-[20px] r-[20px]">
+    <div className="relative top-[20px] right-[20px]">
       <button
         aria-label="Copy code"
         type="button"
